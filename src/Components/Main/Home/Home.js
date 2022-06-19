@@ -101,7 +101,7 @@ const Home = (props) => {
     Geolocation.getCurrentPosition(
       (position) => {
         const {latitude, longitude} = position.coords;
-      
+
         setCheckLocal(false);
         setLocation({
           latitude,

@@ -94,7 +94,7 @@ const ContactUpdate = (props) => {
     }
   };
   return (
-    <View>
+    <ScrollView>
       <View style={styles.wrapperHeader}>
         <Text style={styles.textStyleHeader}>{t('UpdateInformation')}</Text>
       </View>
@@ -196,7 +196,7 @@ const ContactUpdate = (props) => {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({
@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
   wrapperInput: {
-    height: 300,
+    height: 340,
     alignItems: 'center',
     paddingTop: 20,
   },

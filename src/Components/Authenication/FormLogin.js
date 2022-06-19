@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import React, {useEffect} from 'react';
+import {useNavigation} from '@react-navigation/native';
 import {
   View,
   Text,
@@ -13,13 +13,13 @@ import ICFacebook from '../../Images/Icons/facebook.png';
 import ICEmail from '../../Images/Icons/gmail.png';
 import SaveDataLogin from '../../AsyncStorage/SaveDataLogin';
 import LoginAPI from '../../RestAPI/User/login-api';
-import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import { setDataLogin } from '../../Redux/ActionCreators';
+import {connect} from 'react-redux';
+import {useTranslation} from 'react-i18next';
+import {setDataLogin} from '../../Redux/ActionCreators';
 
 const FormLogin = (props) => {
   const navigation = useNavigation();
-  const { t } = useTranslation();
+  const {t} = useTranslation();
   const [emailLogin, setemailLogin] = React.useState('');
   const [mkLogin, setmkLogin] = React.useState('');
 
@@ -36,8 +36,8 @@ const FormLogin = (props) => {
             Alert.alert(
               `${t('Notifi')}`,
               `${t('UnsuccessfulPleaseReEnter')}`,
-              [{ text: `${t('confirm')}` }],
-              { cancelable: false },
+              [{text: `${t('confirm')}`}],
+              {cancelable: false},
             );
           }
         })
@@ -46,8 +46,8 @@ const FormLogin = (props) => {
       Alert.alert(
         `${t('Notifi')}`,
         `${t('PleaseEnterTheInformation')}`,
-        [{ text: `${t('confirm')}` }],
-        { cancelable: false },
+        [{text: `${t('confirm')}`}],
+        {cancelable: false},
       );
     }
   };
@@ -74,7 +74,7 @@ const FormLogin = (props) => {
   );
 };
 
-export default connect(null, { setDataLogin })(FormLogin);
+export default connect(null, {setDataLogin})(FormLogin);
 const styles = StyleSheet.create({
   wrapper: {
     paddingTop: 10,
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#088A68',
   },
   wrapperInput: {
-    height: 300,
+    height: 200,
     alignItems: 'center',
     paddingTop: 100,
   },

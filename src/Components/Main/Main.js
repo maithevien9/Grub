@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import React, {useEffect} from 'react';
+import {View, Text, Image, StyleSheet} from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import icNotify from '../../Images/Icons/notification.png';
 import icNotify2 from '../../Images/Icons/notification2.png';
@@ -17,15 +17,15 @@ import Notify from './Notify/NotifyView';
 import Cart from './Cart/Cart';
 import ContactMain from './Contact/Contact';
 import GetInforUser from '../../RestAPI/User/get-infor-user';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import NotifyAPI from '../../RestAPI/Notify/get-notify-api';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 import SaveDataCart from '../../AsyncStorage/SaveDataCart';
 import GetNotify from '../../RestAPI/Notify/get-notify-api';
-import { setdataNotify } from '../../Redux/ActionCreators';
+import {setdataNotify} from '../../Redux/ActionCreators';
 const Main = (props) => {
   const [selectedTab, setSelectedTab] = React.useState('home');
-  const { t, i18n } = useTranslation();
+  const {t, i18n} = useTranslation();
 
   useEffect(() => {
     SaveDataCart(props.Cart);
@@ -49,7 +49,7 @@ const Main = (props) => {
     setSelectedTab('Cart');
   };
   return (
-    <TabNavigator tabBarStyle={{ height: 53 }}>
+    <TabNavigator tabBarStyle={{height: 53}}>
       <TabNavigator.Item
         selected={selectedTab === 'home'}
         title={t('Home')}
@@ -107,7 +107,7 @@ const Main = (props) => {
   );
 };
 const styles = StyleSheet.create({
-  wrapperImage: { height: 23, width: 23 },
+  wrapperImage: {height: 23, width: 23},
   tabTitle: {
     fontSize: 10,
     fontFamily: 'Roboto',
@@ -120,4 +120,4 @@ function mapStateToProps(state) {
     Cart: state.Cart,
   };
 }
-export default connect(mapStateToProps, { setdataNotify })(Main);
+export default connect(mapStateToProps, {setdataNotify})(Main);

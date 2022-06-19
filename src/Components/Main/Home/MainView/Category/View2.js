@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto',
   },
   wrapperPlastic: {
-    marginTop: '8%',
+    marginTop: '-7%',
     width: '96%',
     borderRadius: 40,
     marginLeft: '2%',

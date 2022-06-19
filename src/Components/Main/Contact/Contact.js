@@ -51,7 +51,7 @@ const Contact = (props) => {
     navigation.navigate('ContactUpdate');
   };
   return (
-    <View>
+    <ScrollView>
       <View style={styles.wrapperHeader}>
         <Text style={styles.textStyleHeader}>{t('Contact')}</Text>
       </View>
@@ -114,7 +114,7 @@ const Contact = (props) => {
           <Text style={styles.wrapperTextupdate}>{t('Update')}</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -216,6 +216,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 50,
     width: '92%',
+    marginBottom: 10,
   },
   TextMain: {
     fontFamily: 'Roboto',

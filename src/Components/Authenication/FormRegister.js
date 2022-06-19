@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -8,12 +8,12 @@ import {
   Alert,
 } from 'react-native';
 import registerAPI from '../../RestAPI/User/register-api';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 const FormRegister = (props) => {
   const [user, setuser] = useState('');
   const [mk, setmk] = useState('');
   const [mk2, setmk2] = useState('');
-  const { t } = useTranslation();
+  const {t} = useTranslation();
   const HandleRegister = () => {
     if (mk === mk2 && user !== '' && mk !== '') {
       registerAPI(user, mk)
@@ -29,7 +29,7 @@ const FormRegister = (props) => {
                   onPress: () => console.log('OK Pressed'),
                 },
               ],
-              { cancelable: false },
+              {cancelable: false},
             );
           } else {
             Alert.alert(
@@ -41,7 +41,7 @@ const FormRegister = (props) => {
                   onPress: () => console.log('OK Pressed'),
                 },
               ],
-              { cancelable: false },
+              {cancelable: false},
             );
           }
         })
@@ -52,8 +52,8 @@ const FormRegister = (props) => {
       Alert.alert(
         `${t('Notifi')}`,
         `${t('PleaseEnterTheInformation')}`,
-        [{ text: `${t('confirm')}`, onPress: () => console.log('OK Pressed') }],
-        { cancelable: false },
+        [{text: `${t('confirm')}`, onPress: () => console.log('OK Pressed')}],
+        {cancelable: false},
       );
     }
   };
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#088A68',
   },
   wrapperInput: {
-    height: 300,
+    height: 200,
     alignItems: 'center',
     paddingTop: 100,
   },
