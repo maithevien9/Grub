@@ -38,7 +38,7 @@ const Authentication = (props) => {
         <View style={styles.wrapper1}>
           <TouchableOpacity
             onPress={() => navigation.goBack()}></TouchableOpacity>
-          <Text style={styles.textStyle}>ETECH DREAM</Text>
+          <Text style={styles.textStyle}>GRUB</Text>
           <View style={styles.iconStyle}></View>
         </View>
         <View style={styles.wrapper2}></View>

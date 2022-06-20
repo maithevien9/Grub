@@ -51,7 +51,7 @@ const Loading = (props) => {
   }, []);
   return (
     <View style={styles.wrapper}>
-      <Text style={styles.StyleText}>ETECH DREAM TEAM</Text>
+      <Text style={styles.StyleText}>GRUB</Text>
     </View>
   );
 };

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, Text} from 'react-native';
+import {View, SafeAreaView} from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import store from './src/Redux/Redux';
 import {Provider} from 'react-redux';

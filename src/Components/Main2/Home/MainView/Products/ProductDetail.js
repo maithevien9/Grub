@@ -235,7 +235,7 @@ const styles = StyleSheet.create({
   },
   wrapperBtnCustomer: {
     justifyContent: 'space-around',
-    marginTop: '29%',
+    marginTop: '19%',
     height: windowHeight / 15,
     width: '90%',
     borderRadius: 10,

@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, {Component, useState} from 'react';
 import {
   View,
   Text,
@@ -16,12 +16,12 @@ import icVn2 from '../../../../Images/Icons/vietnam2.png';
 import icUSA from '../../../../Images/Icons/usa.png';
 import icUSA2 from '../../../../Images/Icons/usa2.png';
 import icTranslate from '../../../../Images/Icons/translate.png';
-import { useTranslation } from 'react-i18next';
-const { height } = Dimensions.get('window');
+import {useTranslation} from 'react-i18next';
+const {height} = Dimensions.get('window');
 
 const Header = (props) => {
   const [valueLanguege, setValueLanguege] = useState(false);
-  const { t, i18n } = useTranslation();
+  const {t, i18n} = useTranslation();
   const HandleChangeLanguage = () => {
     Alert.alert(
       `${t('Notifi')}`,
@@ -37,7 +37,7 @@ const Header = (props) => {
           onPress: () => i18n.changeLanguage('vn'),
         },
       ],
-      { cancelable: false },
+      {cancelable: false},
     );
   };
   return (
@@ -52,11 +52,11 @@ const Header = (props) => {
           onPress={() => {
             props.onOpen();
           }}
-          style={{ justifyContent: 'center', alignItems: 'center' }}>
+          style={{justifyContent: 'center', alignItems: 'center'}}>
           <Image source={icMenu} style={styles.iconStyle} />
         </TouchableOpacity>
-        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-          <Text style={styles.textStyle}>Etech Dream</Text>
+        <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <Text style={styles.textStyle}>GRUB</Text>
         </View>
         <TouchableOpacity
           style={styles.wrapperWrong}

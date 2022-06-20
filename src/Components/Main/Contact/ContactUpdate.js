@@ -94,43 +94,23 @@ const ContactUpdate = (props) => {
     }
   };
   return (
-    <ScrollView>
+    <View>
       <View style={styles.wrapperHeader}>
         <Text style={styles.textStyleHeader}>{t('UpdateInformation')}</Text>
       </View>
       <View style={styles.wrapperLine} />
 
-      <View style={styles.wrapperMapFull}>
-        {DataCheckMap ? (
-          <MapView
-            style={styles.map}
-            initialRegion={{
-              latitude: latitude,
-              longitude: longitude,
-              latitudeDelta: ZoomX,
-              longitudeDelta: ZoomY,
-            }}>
-            <Marker
-              coordinate={{
-                latitude: latitude,
-                longitude: longitude,
-              }}
-            />
-          </MapView>
-        ) : (
-          <View style={styles.map2}>
-            <Text style={styles.TextMain}>{t('PleaseUpdateYourAddress')}</Text>
-          </View>
-        )}
-      </View>
       <View
         style={{
-          height: '25%',
+          height: '15%',
           width: '100%',
           paddingHorizontal: 10,
           flexWrap: 'wrap',
         }}>
         <GooglePlacesAutocomplete
+          onFail={(a) => {
+            console.log({a});
+          }}
           placeholder={t('Address')}
           minLength={2}
           autoFocus={false}
@@ -155,7 +135,7 @@ const ContactUpdate = (props) => {
           }}
           onPress={(data, details = null) => {
             // 'details' is provided when fetchDetails = true
-
+            console.log({data, details});
             setAddress(data.description);
             setDataCheckMap(true);
             setlatitude(details.geometry.location.lat);
@@ -172,6 +152,31 @@ const ContactUpdate = (props) => {
           // predefinedPlaces={[homePlace, workPlace]}
         />
       </View>
+
+      <View style={styles.wrapperMapFull}>
+        {DataCheckMap ? (
+          <MapView
+            style={styles.map}
+            initialRegion={{
+              latitude: latitude,
+              longitude: longitude,
+              latitudeDelta: ZoomX,
+              longitudeDelta: ZoomY,
+            }}>
+            <Marker
+              coordinate={{
+                latitude: latitude,
+                longitude: longitude,
+              }}
+            />
+          </MapView>
+        ) : (
+          <View style={styles.map2}>
+            <Text style={styles.TextMain}>{t('PleaseUpdateYourAddress')}</Text>
+          </View>
+        )}
+      </View>
+
       <View style={styles.wrapperInput}>
         <TextInput
           onChangeText={(text) => setName(text)}
@@ -196,7 +201,7 @@ const ContactUpdate = (props) => {
           </TouchableOpacity>
         </View>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 const styles = StyleSheet.create({
