@@ -133,21 +133,21 @@ const Home = (props) => {
               onPress={HandleWaitForPackageBrowsing}>
               <Text style={styles.StyleTextBtn}>{t('RigisterRecy')}</Text>
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={styles.WrapperBtnLogOut}
               onPress={HandlePackageOnSale}>
               <Text style={styles.StyleTextBtn}>{t('packageOnSale')}</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <TouchableOpacity
               style={styles.WrapperBtnLogOut}
               onPress={HandlePackageSaled}>
               <Text style={styles.StyleTextBtn}>{t('packageSaled')}</Text>
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={styles.WrapperBtnLogOut}
               onPress={handleSelectRoleMenu}>
               <Text style={styles.StyleTextBtn}>{t('SelectRoleMenu2')}</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             <TouchableOpacity
               style={styles.WrapperBtnLogOut2}

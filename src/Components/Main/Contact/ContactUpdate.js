@@ -94,7 +94,7 @@ const ContactUpdate = (props) => {
     }
   };
   return (
-    <View>
+    <ScrollView>
       <View style={styles.wrapperHeader}>
         <Text style={styles.textStyleHeader}>{t('UpdateInformation')}</Text>
       </View>
@@ -191,7 +191,13 @@ const ContactUpdate = (props) => {
           placeholder={t('Phone')}
         />
 
-        <View style={{alignItems: 'center', marginTop: 10, width: '90%'}}>
+        <View
+          style={{
+            alignItems: 'center',
+            marginTop: 10,
+            width: '90%',
+            marginBottom: 120,
+          }}>
           <TouchableOpacity
             style={styles.wapperBtnUpdate}
             onPress={() => {
@@ -201,7 +207,7 @@ const ContactUpdate = (props) => {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({

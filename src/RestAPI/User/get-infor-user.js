@@ -1,5 +1,5 @@
 const GetInforUser = async (Token) => {
-  var url = `https://ba-e-project2.herokuapp.com/GetInfor`;
+  var url = `http://192.168.71.119:8001/GetInfor`;
   return await fetch(url, {
     method: 'GET',
     headers: {

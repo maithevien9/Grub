@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
 
   textInput: {
     height: 55,
-    width: 366,
+    width: 326,
     backgroundColor: 'white',
     borderColor: 'black',
     paddingLeft: 20,
@@ -112,14 +112,14 @@ const styles = StyleSheet.create({
 
   Button: {
     height: 60,
-    width: 366,
+    width: 326,
     backgroundColor: 'white',
     borderColor: 'black',
     borderRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 15,
-    marginTop: 65,
+    marginTop: 45,
   },
   Text: {
     color: '#BDBDBD',

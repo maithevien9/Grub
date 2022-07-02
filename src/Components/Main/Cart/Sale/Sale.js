@@ -23,7 +23,7 @@ const windowHeight = Dimensions.get('window').height;
 const Sale = (props) => {
   const {t} = useTranslation();
   var i = 0;
-  const [amount, setAmount] = React.useState();
+  const [amount, setAmount] = React.useState('');
   const [Address, setAddress] = React.useState(
     props.InforUser.Address ? props.InforUser.Address : '',
   );
@@ -49,6 +49,12 @@ const Sale = (props) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    console.log({values: route.params.value});
+    setAmount(route.params.value?.toString());
+  }, [route.params.value]);
+
   const HanldeSale = () => {
     let ts = Date.now();
     let date_ob = new Date(ts);
@@ -124,13 +130,13 @@ const Sale = (props) => {
         <Text style={styles.Textheader}>{t('PackagePostSales')}</Text>
       </View>
       <View style={styles.wrapperMain}>
-        <Text style={styles.textMain}>{t('Price')} (VND)</Text>
+        <Text style={styles.textMain}>{t('Price')}</Text>
         <TextInput
-          onChangeText={(text) => setAmount(text)}
+          editable={false}
+          // onChangeText={(text) => setAmount(text)}
           value={amount}
           keyboardType="numeric"
           style={styles.textInput}
-          placeholder={route.params.value}
         />
       </View>
 

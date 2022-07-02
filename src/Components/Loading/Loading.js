@@ -29,8 +29,9 @@ const Loading = (props) => {
             CheckToken(value.token)
               .then((json) => {
                 var data = JSON.parse(JSON.stringify(json));
+                console.log({data});
                 if (data.dataString === 'THANH_CONG') {
-                  navigation.replace('SelectRole');
+                  navigation.replace('Main');
                 } else {
                   navigation.replace('Authenication');
                 }

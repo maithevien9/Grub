@@ -66,7 +66,7 @@ const CategoryDetail = (props) => {
         <Text style={styles.textMain}>{t('Amount')}</Text>
         <TextInput
           onChangeText={(text) => setAmount(text)}
-          value={amount}
+          value={'1232'}
           keyboardType="numeric"
           style={styles.textInput}
           placeholder={route.params.Unit}
@@ -74,7 +74,7 @@ const CategoryDetail = (props) => {
       </View>
       <View style={styles.wrapperScore}>
         <Text style={styles.textMain}>{t('RedemptionPoint')}:</Text>
-        <Text style={styles.textMain}>{amount * Score} VND</Text>
+        <Text style={styles.textMain}>{amount * Score}</Text>
       </View>
 
       <View style={styles.wrapperTextView}>

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import icNotify from '../../Images/Icons/notification.png';
@@ -23,9 +23,15 @@ import {useTranslation} from 'react-i18next';
 import SaveDataCart from '../../AsyncStorage/SaveDataCart';
 import GetNotify from '../../RestAPI/Notify/get-notify-api';
 import {setdataNotify} from '../../Redux/ActionCreators';
+import Geolocation from 'react-native-geolocation-service';
+import {setInforUser} from '../../Redux/ActionCreators';
+
+import {PermissionsAndroid} from 'react-native';
+
 const Main = (props) => {
   const [selectedTab, setSelectedTab] = React.useState('home');
   const {t, i18n} = useTranslation();
+  const [location, setLocation] = useState();
 
   useEffect(() => {
     SaveDataCart(props.Cart);
@@ -38,6 +44,45 @@ const Main = (props) => {
         console.error(error + 'fail');
       });
   });
+
+  const getLocal = async () => {
+    await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+    );
+    Geolocation.getCurrentPosition(
+      (position) => {
+        const {latitude, longitude} = position.coords;
+
+        setLocation({
+          latitude,
+          longitude,
+        });
+      },
+      (error) => {
+        console.log(error.code, error.message);
+      },
+      {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
+    );
+  };
+
+  useEffect(() => {
+    async function getDataLogin() {
+      GetInforUser(props.dataLogin.token)
+        .then((json) => {
+          var InforUser = JSON.parse(JSON.stringify(json));
+          console.log({data: InforUser.data[0]});
+          props.setInforUser(InforUser.data[0]);
+        })
+        .catch((error) => {
+          console.error(error + 'fail');
+        });
+    }
+    getLocal();
+    getDataLogin();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.dataLogin.token]);
+
   const HandleSelectContact = () => {
     setSelectedTab('Contact');
   };
@@ -120,4 +165,4 @@ function mapStateToProps(state) {
     Cart: state.Cart,
   };
 }
-export default connect(mapStateToProps, {setdataNotify})(Main);
+export default connect(mapStateToProps, {setdataNotify, setInforUser})(Main);

@@ -37,7 +37,7 @@ const About = (props) => {
         scoreData = scoreData + e.amount * e.Score;
       });
       console.log(scoreData);
-      var value = `${t('RecommendedPrice')} ${scoreData} VND`;
+      var value = scoreData;
       navigation.navigate('Sale', {value});
     }
   };

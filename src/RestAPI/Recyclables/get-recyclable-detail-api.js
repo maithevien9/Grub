@@ -1,5 +1,5 @@
 const GetRecyclablesDetailAPI = async (ID) => {
-  var url = `https://ba-e-project2.herokuapp.com/GetRycyclableDetail/${ID}`;
+  var url = `http://192.168.71.119:8001/GetRycyclableDetail/${ID}`;
   return await fetch(url).then((response) => response.json());
 };
 

@@ -1,5 +1,5 @@
 const ChangeStatusRecyAPI = async (IDRece, IDstatus) => {
-  var url = 'https://ba-e-project2.herokuapp.com/ChangeStatusRece';
+  var url = 'http://192.168.71.119:8001/ChangeStatusRece';
 
   return await fetch(url, {
     method: 'PUT',

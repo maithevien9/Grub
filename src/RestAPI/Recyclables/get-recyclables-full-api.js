@@ -1,5 +1,5 @@
 const GetRecyclablesFullAPI = async (Token, status) => {
-  var url = `https://ba-e-project2.herokuapp.com/GetRycyclablefull`;
+  var url = `http://192.168.71.119:8001/GetRycyclablefull`;
   return await fetch(url).then((response) => response.json());
 };
 

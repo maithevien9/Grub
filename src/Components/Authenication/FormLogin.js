@@ -31,7 +31,7 @@ const FormLogin = (props) => {
           if (dataLogin.dataString === 'THANH_CONG') {
             SaveDataLogin(dataLogin);
             props.setDataLogin(dataLogin);
-            navigation.navigate('SelectRole');
+            navigation.navigate('Main');
           } else {
             Alert.alert(
               `${t('Notifi')}`,
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
 
   textInput: {
     height: 55,
-    width: 366,
+    width: 336,
     backgroundColor: 'white',
     borderColor: 'black',
     paddingLeft: 20,
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
 
   Button: {
     height: 60,
-    width: 366,
+    width: 326,
     backgroundColor: 'white',
     borderColor: 'black',
 

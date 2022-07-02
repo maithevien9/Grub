@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto',
   },
   wrapperSectionButton: {
-    paddingTop: 268,
+    paddingTop: 238,
     paddingLeft: 20,
     paddingRight: 20,
 
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
   },
   SectionButton: {
     height: 50,
-    width: 180,
+    width: 150,
     backgroundColor: 'white',
     borderColor: '#808080',
     borderWidth: 1,
