@@ -262,6 +262,7 @@ const View1 = (props) => {
 const styles = StyleSheet.create({
   wrapper: {
     height: '100%',
+    marginTop: -20,
   },
   wrapperBtn: {
     height: 80,
@@ -321,7 +322,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto',
   },
   wrapperPlastic: {
-    marginTop: '2%',
+    marginTop: '0%',
     width: '96%',
     borderRadius: 40,
     marginLeft: '2%',

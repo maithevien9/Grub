@@ -84,6 +84,7 @@ const View2 = (props) => {
 const styles = StyleSheet.create({
   wrapper: {
     height: '100%',
+    marginTop: -40,
   },
   wrapperBtn: {
     height: 80,
@@ -97,7 +98,7 @@ const styles = StyleSheet.create({
   },
   wrapperMain1: {
     height: '15%',
-    marginTop: '27%',
+    marginTop: '30%',
   },
   wrapperMain2Parient: {
     height: '45%',

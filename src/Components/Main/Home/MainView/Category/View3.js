@@ -76,6 +76,7 @@ const View2 = (props) => {
 const styles = StyleSheet.create({
   wrapper: {
     height: '100%',
+    marginTop: -40,
   },
   wrapperBtn: {
     height: 80,
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
   },
   wrapperMain1: {
     height: '15%',
-    marginTop: '28%',
+    marginTop: '30%',
   },
   wrapperMain2Parient: {
     height: '45%',
@@ -145,7 +146,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginHorizontal: '7%',
-    marginTop: '3%',
+    marginTop: '0%',
   },
   wrapperTextHeader: {
     fontSize: 13,
