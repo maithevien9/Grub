@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-
+import ImagePicker, {launchImageLibrary} from 'react-native-image-picker';
 import Drawer from 'react-native-drawer';
 
 import {useNavigation} from '@react-navigation/native';
@@ -18,6 +18,10 @@ import {LogBox} from 'react-native';
 import GetHistoryRecyclablesAPI from '../../../RestAPI/Recyclables/get-history-recyclables';
 import {useTranslation} from 'react-i18next';
 import {setHistoryReducer} from '../../../Redux/ActionCreators';
+import icUpload from '../../../Images/Icons/cloud-computing.png';
+import icLoad from '../../../Images/Icons/Rolling-1s-200px.gif';
+import Toast from 'react-native-toast-message';
+import UploadAPI from '../../../RestAPI/upload';
 
 import Geolocation from 'react-native-geolocation-service';
 import {PermissionsAndroid} from 'react-native';
@@ -30,6 +34,8 @@ const Home = (props) => {
   const [checkLocal, setCheckLocal] = useState(true);
   const {dataCheckLoginSuccess} = props;
   const {t} = useTranslation();
+
+  const [loading, setLoading] = useState(null);
 
   useEffect(() => {
     getLocal();
@@ -92,6 +98,38 @@ const Home = (props) => {
       .catch((error) => {
         console.error(error + 'fail');
       });
+  };
+
+  const uploadImage = async () => {
+    launchImageLibrary(
+      {
+        mediaType: 'photo',
+        includeBase64: false,
+        maxHeight: 200,
+        maxWidth: 200,
+      },
+      async (response) => {
+        const fmData = new FormData();
+        setLoading(true);
+        fmData.append('image', {
+          name: response.assets[0].fileName,
+          type: response.assets[0].type,
+          uri: response.assets[0].uri,
+        });
+        console.log('111');
+        const results = await UploadAPI(fmData);
+
+        console.log(results);
+
+        setLoading(false);
+
+        Toast.show({
+          type: 'success',
+          text1: `Phân loại: ${results?.className}`,
+          text2: `Xác xuất: ${results?.probability}`,
+        });
+      },
+    );
   };
 
   const getLocal = async () => {
@@ -158,6 +196,30 @@ const Home = (props) => {
         }>
         <HomeView open={openControlPanel.bind(this)} />
       </Drawer>
+      <View>
+        <TouchableOpacity
+          style={styles.buttonStyle}
+          activeOpacity={0.5}
+          onPress={uploadImage}>
+          <Image source={icUpload} style={styles.iconStyle} />
+        </TouchableOpacity>
+      </View>
+
+      {loading && (
+        <View
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          {/* <Text>1</Text> */}
+          <Image source={icLoad} style={styles.iconStyle} />
+        </View>
+      )}
     </View>
   );
 };
@@ -171,6 +233,18 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {setHistoryReducer})(Home);
 
 const styles = StyleSheet.create({
+  iconStyle: {
+    width: 35,
+    height: 35,
+  },
+  buttonStyle: {
+    marginTop: -44,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    paddingRight: 20,
+  },
+  buttonTextStyle: {},
   wrapper: {
     flex: 1,
     backgroundColor: '#009966',

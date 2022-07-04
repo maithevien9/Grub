@@ -21,6 +21,7 @@ import Main2 from './src/Components/Main2/Main';
 import ProductDetail from './src/Components/Main2/Home/MainView/Products/ProductDetail';
 import ListProducts from './src/Components/Main2/Home/MainView/Products/ListProducts';
 import './src/I18n';
+import Toast from 'react-native-toast-message';
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -51,6 +52,7 @@ const App = () => {
           <Stack.Screen name="PackageSaled" component={PackageSaled} />
         </Stack.Navigator>
       </NavigationContainer>
+      <Toast />
     </Provider>
   );
 };

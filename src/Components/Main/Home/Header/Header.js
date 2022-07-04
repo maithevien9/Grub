@@ -40,6 +40,7 @@ const Header = (props) => {
       {cancelable: false},
     );
   };
+
   return (
     <View
       style={{
