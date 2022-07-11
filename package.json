@@ -23,7 +23,7 @@
     "react-native-drawer": "^2.5.1",
     "react-native-geolocation-service": "^5.2.0",
     "react-native-gesture-handler": "^1.10.3",
-    "react-native-google-places-autocomplete": "^2.1.3",
+    "react-native-google-places-autocomplete": "^2.4.1",
     "react-native-image-picker": "^4.8.4",
     "react-native-location-view": "^0.3.0",
     "react-native-maps": "^0.27.1",

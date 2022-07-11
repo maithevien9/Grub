@@ -94,7 +94,7 @@ const ContactUpdate = (props) => {
     }
   };
   return (
-    <ScrollView>
+    <View>
       <View style={styles.wrapperHeader}>
         <Text style={styles.textStyleHeader}>{t('UpdateInformation')}</Text>
       </View>
@@ -102,10 +102,11 @@ const ContactUpdate = (props) => {
 
       <View
         style={{
-          height: '15%',
+          height: 400,
           width: '100%',
           paddingHorizontal: 10,
           flexWrap: 'wrap',
+          zIndex: 200,
         }}>
         <GooglePlacesAutocomplete
           onFail={(a) => {
@@ -134,7 +135,8 @@ const ContactUpdate = (props) => {
             },
           }}
           onPress={(data, details = null) => {
-            // 'details' is provided when fetchDetails = true
+            console.log('Checkkkkkkk');
+
             console.log({data, details});
             setAddress(data.description);
             setDataCheckMap(true);
@@ -146,10 +148,9 @@ const ContactUpdate = (props) => {
             setZoomY(0.3);
           }}
           query={{
-            key: 'AIzaSyAE8jGKDc99bqKIup4jFl_17OtQKoTkG_k',
+            key: 'AIzaSyBUQq_5wJw3QQnGaX9WqzCgL1VZls4Zlc4',
             language: 'vn',
           }}
-          // predefinedPlaces={[homePlace, workPlace]}
         />
       </View>
 
@@ -207,7 +208,7 @@ const ContactUpdate = (props) => {
           </TouchableOpacity>
         </View>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 const styles = StyleSheet.create({
