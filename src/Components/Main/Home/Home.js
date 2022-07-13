@@ -104,6 +104,10 @@ const Home = (props) => {
     navigation.navigate('Points');
   };
 
+  const HandleHistoryPoint = () => {
+    navigation.navigate('HistoryPoint');
+  };
+
   const uploadImage = async () => {
     launchImageLibrary(
       {
@@ -189,6 +193,11 @@ const Home = (props) => {
               style={styles.WrapperBtnLogOut}
               onPress={HandlePoint}>
               <Text style={styles.StyleTextBtn}>Đổi điểm</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.WrapperBtnLogOut}
+              onPress={HandleHistoryPoint}>
+              <Text style={styles.StyleTextBtn}>Lịch sử đổi điểm</Text>
             </TouchableOpacity>
 
             {/* <TouchableOpacity
@@ -306,7 +315,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'white',
     borderRadius: 15,
-    marginTop: '50%',
+    marginTop: '20%',
   },
   StyleTextBtn: {
     fontSize: 16,

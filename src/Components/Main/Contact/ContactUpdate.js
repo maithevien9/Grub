@@ -102,7 +102,7 @@ const ContactUpdate = (props) => {
 
       <View
         style={{
-          height: 400,
+          height: 200,
           width: '100%',
           paddingHorizontal: 10,
           flexWrap: 'wrap',
@@ -269,6 +269,7 @@ const styles = StyleSheet.create({
   },
   wrapperMapFull: {
     alignItems: 'center',
+    marginTop: -140,
   },
   wapperBtnUpdate: {
     alignItems: 'center',

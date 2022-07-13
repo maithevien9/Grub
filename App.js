@@ -22,6 +22,8 @@ import ProductDetail from './src/Components/Main2/Home/MainView/Products/Product
 import ListProducts from './src/Components/Main2/Home/MainView/Products/ListProducts';
 import './src/I18n';
 import Points from './src/Components/Points';
+import HistoryPoint from './src/Components/Points/historyPoint';
+
 import Toast from 'react-native-toast-message';
 
 const Stack = createStackNavigator();
@@ -45,6 +47,7 @@ const App = () => {
           <Stack.Screen name="PackageOnSale" component={PackageOnSale} />
           <Stack.Screen name="ContactUpdate" component={ContactUpdate} />
           <Stack.Screen name="Points" component={Points} />
+          <Stack.Screen name="HistoryPoint" component={HistoryPoint} />
           <Stack.Screen name="CategoryDetail" component={CategoryDetail} />
           <Stack.Screen name="Sale" component={Sale} />
           <Stack.Screen

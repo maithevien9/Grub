@@ -41,6 +41,7 @@ export function setDataLogin(data) {
 }
 
 export function setInforUser(data) {
+  console.log({data});
   return {
     type: 'setInforUser',
     data: data,

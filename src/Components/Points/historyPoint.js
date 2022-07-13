@@ -7,68 +7,55 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Alert,
 } from 'react-native';
 import icGift from '.././../Images/Icons/cart.png';
-import {GetGifts, CreateRequestGift} from '../.././RestAPI/gifts';
+import {GetHistoryGifts} from '../.././RestAPI/gifts';
 import Toast from 'react-native-toast-message';
 import {connect} from 'react-redux';
 import {useTranslation} from 'react-i18next';
-import {setInforUser} from '../../Redux/ActionCreators';
 
 const windowHeight = Dimensions.get('window').height;
-const Points = (props) => {
+const HistoryPoint = (props) => {
   const {t} = useTranslation();
+
   const [gifts, setGifts] = useState([]);
 
   useEffect(() => {
-    GetGifts()
+    GetHistoryGifts(props.InforUser.ID)
       .then((json) => {
         var dataNotify = JSON.parse(JSON.stringify(json));
+        console.log({dataNotify});
         setGifts(dataNotify.data);
       })
       .catch((error) => {
         console.error(error + 'fail');
       });
-  }, []);
+  }, [props.InforUser.ID]);
 
-  const handleRequestGift = (giftId, point) => {
-    Alert.alert(`${t('Notifi')}`, 'Bạn xác nhận đổi quà trên ?', [
-      {text: 'Huỷ', onPress: () => console.log('OK Pressed')},
-      {
-        text: `${t('confirm')}`,
-        onPress: () => {
-          CreateRequestGift({
-            giftId: giftId,
-            status: '1',
-            userId: props.InforUser.ID?.toString(),
-          }).then(() => {
-            Toast.show({
-              type: 'success',
-              text1: `Thông báo`,
-              text2: `Gửi yêu cầu đổi quà thành công`,
-            });
+  const handleRequestGift = (giftId) => {
+    Toast.show({
+      type: 'success',
+      text1: `Thông báo`,
+      text2: `Gửi yêu cầu đổi quà thành công`,
+    });
+  };
 
-            props.setInforUser({
-              ...props.InforUser,
-              points: props.InforUser.points - point,
-            });
-          });
-        },
-      },
-    ]);
+  const handleStatus = (status) => {
+    switch (status) {
+      case 1: {
+        return 'Đang xử lý';
+      }
+      default:
+        return 'Đã giao';
+    }
   };
 
   return (
     <View>
       <View style={styles.wrapperHeader}>
-        <Text style={styles.textStyleHeader}>Đổi Điểm</Text>
+        <Text style={styles.textStyleHeader}>Lịch sử Đổi Điểm</Text>
       </View>
 
-      <View style={{marginTop: 20, marginLeft: 20, flexDirection: 'row'}}>
-        <Text style={{fontWeight: 'bold'}}>Tích điểm: </Text>
-        <Text>{props.InforUser.points || 0}</Text>
-      </View>
       <ScrollView style={styles.wrapperMain}>
         {gifts.map((e) => (
           <View style={styles.wrapperForm}>
@@ -82,15 +69,21 @@ const Points = (props) => {
                   </View>
                 </View>
 
-                <TouchableOpacity
-                  style={styles.wrapperRowScore}
-                  onPress={() => handleRequestGift(e.id, e.price)}>
-                  <Text style={styles.StyleText2}>Đổi quà</Text>
-                </TouchableOpacity>
+                {/* <View style={styles.wrapperRowScore}>
+                  <Text style={styles.StyleText2}>Status: </Text>
+                  <Text style={styles.StyleText3}>Đang đợi</Text>
+                </View> */}
               </View>
               <View style={styles.wrapperRowScore}>
                 <Text style={styles.StyleText}>Price </Text>
                 <Text style={styles.StyleTextDetail}>{e.price}</Text>
+              </View>
+
+              <View style={styles.wrapperRowScore}>
+                <Text style={styles.StyleText}>Trạng thái </Text>
+                <Text style={styles.StyleTextDetail}>
+                  {handleStatus(e.status)}
+                </Text>
               </View>
             </View>
           </View>
@@ -117,6 +110,7 @@ const styles = StyleSheet.create({
   wrapperMain: {
     marginLeft: '3%',
     marginTop: '3%',
+    height: windowHeight - 130,
   },
   wrapperForm: {
     width: '95%',
@@ -138,6 +132,7 @@ const styles = StyleSheet.create({
   },
   wrapperRowFull: {
     flexDirection: 'row',
+    justifyContent: 'flex-start',
   },
   wrapperRowGift: {
     flexDirection: 'row',
@@ -161,6 +156,12 @@ const styles = StyleSheet.create({
     color: 'black',
     marginLeft: 6,
   },
+  StyleText3: {
+    fontSize: 12,
+    fontFamily: 'Roboto',
+    color: 'black',
+    marginLeft: 6,
+  },
   StyleText2: {
     fontSize: 12,
     fontFamily: 'Roboto',
@@ -175,4 +176,4 @@ function mapStateToProps(state) {
     InforUser: state.InforUser,
   };
 }
-export default connect(mapStateToProps, {setInforUser})(Points);
+export default connect(mapStateToProps)(HistoryPoint);
